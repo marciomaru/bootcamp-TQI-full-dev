@@ -5,13 +5,15 @@ body {
     padding: 0;
     color: white;
     font-family: 'Amatic SC', sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header */
 
 .header-wrapper {
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     background: linear-gradient(-45deg, #2e1437, #13444d, #2d5e4c, #51425f);
     background-size: 400% 400%;
     display: flex;
@@ -19,6 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     animation: backgroundTransition 8s ease-in-out infinite;
+    position: relative;
 }
 
 h1 {
@@ -77,8 +80,8 @@ a:hover {
 }
 
 .checkbox {
-    width: 6.25rem;
-    height: 6.25rem;
+    width: 100px;
+    height: 100px;
     display: flex;
     justify-content: center;
     position: absolute;
@@ -94,22 +97,22 @@ a:hover {
     height: 2px;
     background-color: white;
     position: absolute;
-    border-radius: 0.25rem;
+    border-radius: 4px;
     transition: 0.5s ease-in-out;
 }
 
 .checkbox .trace:nth-child(1) {
-    top: 1.625rem;
+    top: 26px;
     transform: rotate(0);
 }
 
 .checkbox .trace:nth-child(2) {
-    top: 2.875rem;
+    top: 46px;
     transform: rotate(0);
 }
 
 .checkbox .trace:nth-child(3) {
-    top: 4.125rem;
+    top: 66px;
     transform: rotate(0);
 }
 
@@ -117,7 +120,7 @@ a:hover {
     display: none;
 }
 
-#toggle:checked+.checkbox .trace:nth-child(1) {
+/*#toggle:checked+.checkbox .trace:nth-child(1) {
     transform: rotate(45deg);
     top: 2.938rem;
 }
@@ -132,7 +135,7 @@ a:hover {
 #toggle:checked+.checkbox .trace:nth-child(3) {
     transform: rotate(-45deg);
     top: 3rem;
-}
+}*/
 
 /* MENU */
 
@@ -144,7 +147,7 @@ a:hover {
     width: 40px;
     border-radius: 50%;
     border: 1px solid white;
-    background-color: white;
+    background-color: transparent;
     box-shadow: 0px 0px 0px 0px white;
     z-index: -1;
     transition: 400ms ease-in-out 0s;
@@ -182,13 +185,13 @@ a:hover {
 
 #toggle:checked+.checkbox .trace:nth-child(1) {
     transform: rotate(45deg);
-    top: 2.938rem;
+    top: 47px;
     background-color: #2e1437;
 }
 
 #toggle:checked+.checkbox .trace:nth-child(2) {
-    transform: translateX(-6.25rem);
-    top: 1.875rem;
+    transform: translateX(-100px);
+    top: 30px;
     visibility: hidden;
     opacity: 0;
 }
@@ -196,7 +199,7 @@ a:hover {
 #toggle:checked+.checkbox .trace:nth-child(3) {
     transform: rotate(-45deg);
     background-color: #2e1437;
-    top: 3rem;
+    top: 48px;
 }
 
 #toggle:checked+.checkbox {
@@ -211,4 +214,150 @@ a:hover {
 #toggle:checked~.menu-itens {
     visibility: visible;
     opacity: 1;
+}
+
+/* CARDS */
+
+.container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 3rem 0;
+}
+
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+.card {
+    height: 300px;
+    width: 400px;
+    background-image: url("./images/fundo-ti.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0.5);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 3rem 0 0 0;
+}
+
+.card-text {
+    width: 40%;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    color: rgb(109, 109, 109);
+}
+
+.card-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card-wrapper::before {
+    content: "";
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    display: block;
+    border: 1px solid white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper p {
+    font-size: 0;
+    visibility: hidden;
+    opacity: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.card:hover {
+    filter: unset;
+}
+
+.card:hover>.card-wrapper::before {
+    height: 250px;
+    width: 350px;
+    opacity: 1;
+}
+
+.card:hover>.card-wrapper p {
+    opacity: 1;
+    visibility: visible;
+    font-size: 14px;
+}
+
+/* Footer */
+
+.footer {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #13444d;
+    color: white;
+}
+
+/* REPONSIVO */
+
+@media (max-width: 800px) {
+    .social-media {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container {
+        margin-top: 0;
+    }
+
+    .card-container {
+        flex-direction: column;
+    }
+
+    .container .card-container:nth-child(1),
+    .container .card-container:nth-child(3) {
+        flex-direction: column-reverse;
+    }
+
+    .card {
+        height: 250px;
+        width: 250px;
+    }
+
+    .card-text {
+        width: 90%;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .card:hover>.card-wrapper::before {
+        height: 190px;
+        width: 190px;
+    }
 }
