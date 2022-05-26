@@ -4,3 +4,4 @@
 <p>Aula 2 - Menu hamburguer</p>
 <p>Aula 3 - Landind Page com background animado</p>
 <p>Aula 4 - Botão animado para chat e desenho de forma geometrica</p>
+<p>Projeto Final - Uma landing page utilizando todos os tópicos aprendidos</p>
